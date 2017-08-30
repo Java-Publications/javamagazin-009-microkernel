@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.rapidpm.javamagazin</groupId>
+  <artifactId>microkernel</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+
+
+  <modules>
+    <module>microkernel-api</module>
+    <module>microkernel-legacy</module>
+    <module>microkernel-rest</module>
+    <module>microkernel-rest-client</module>
+    <module>microkernel-gui</module>
+  </modules>
+
+  <prerequisites>
+    <maven>3.3.9</maven>
+  </prerequisites>
+
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <vaadin.version>8.1.2</vaadin.version>
+    <undertow.version>2.0.0.Alpha1</undertow.version>
+    <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
+    <selenium.version>3.4.0</selenium.version>
+
+    <!--TDD jUnit5-->
+    <junit.version>4.12</junit.version>
+    <junit.jupiter.version>5.0.0-RC3</junit.jupiter.version>
+    <junit.vintage.version>${junit.version}.0-RC3</junit.vintage.version>
+    <junit.platform.version>1.0.0-RC3</junit.platform.version>
+
+    <!--<shiro.version>1.4.0</shiro.version>-->
+    <shiro.version>1.3.2</shiro.version>
+    <slf4j.version>1.8.0-alpha2</slf4j.version>
+  </properties>
+
+  <repositories>
+    <!--Vaadin Snapshot Repos-->
+    <repository>
+      <id>vaadin-addons</id>
+      <url>http://maven.vaadin.com/vaadin-addons</url>
+    </repository>
+    <repository>
+      <id>vaadin-prereleases</id>
+      <url>http://maven.vaadin.com/vaadin-prereleases</url>
+    </repository>
+    <repository>
+      <id>vaadin-snapshots</id>
+      <name>Vaadin snapshot repository</name>
+      <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+    </repository>
+
+    <!--Testcontainers SNAPSHOT-->
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>vaadin-prereleases</id>
+      <url>http://maven.vaadin.com/vaadin-prereleases</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.rapidpm.javamagazin</groupId>
+        <artifactId>microkernel-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm.javamagazin</groupId>
+        <artifactId>microkernel-legacy</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm.javamagazin</groupId>
+        <artifactId>microkernel-rest</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm.javamagazin</groupId>
+        <artifactId>microkernel-rest-client</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+
+
+
+      <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-bom</artifactId>
+        <version>${vaadin.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+
+      <!--API´s-->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${javax.servlet-api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!--Infrastructure-->
+      <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-core</artifactId>
+        <version>${undertow.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-servlet</artifactId>
+        <version>${undertow.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-undertow</artifactId>
+        <version>3.1.4.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-jaxrs</artifactId>
+        <version>3.1.4.Final</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+        <version>3.8.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+
+  <dependencies>
+
+    <!--TDD-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!--jUnit5-->
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.jupiter.version}</version>
+    </dependency>
+
+
+
+
+    <!--Logging-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.rapidpm</groupId>
+      <artifactId>rapidpm-functional-reactive</artifactId>
+      <version>0.0.6-SNAPSHOT</version>
+    </dependency>
+
+    <!--Persistence-->
+
+    <dependency>
+      <groupId>org.mapdb</groupId>
+      <artifactId>mapdb</artifactId>
+      <version>3.0.5</version>
+    </dependency>
+
+
+    <!--Import CVS-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-csv</artifactId>
+      <version>1.4</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+          <properties>
+            <!-- <includeTags>fast</includeTags> -->
+            <excludeTags>slow</excludeTags>
+          </properties>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>${junit.platform.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.vintage.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

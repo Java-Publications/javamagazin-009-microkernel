@@ -1,0 +1,23 @@
+<?import org.rapidpm.microkernel.gui.fx.main.MainPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<fx:root type="org.rapidpm.microkernel.gui.fx.main.MainPane"
+         fx:controller="org.rapidpm.microkernel.gui.fx.main.MainPaneController"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:id="mainPane">
+
+  <VBox>
+    <Label fx:id="lb" text="Hello JavaFX World"/>
+
+    <TextField fx:id="inputA"/>
+    <TextField fx:id="inputB"/>
+
+    <Button fx:id="btn" onAction="#onAdd" text="Main Button"/>
+    <!--<EditPane fx:id="editPane"/>-->
+    <Text fx:id="message"/>
+  </VBox>
+</fx:root>
+
